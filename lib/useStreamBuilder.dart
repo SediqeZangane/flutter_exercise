@@ -7,6 +7,8 @@ class ShowTextField extends StatefulWidget {
 }
 
 class _ShowTextFieldState extends State<ShowTextField> {
+  BLOC myBloc = BLOC();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,20 +19,31 @@ class _ShowTextFieldState extends State<ShowTextField> {
       body: Column(
         children: [
           SizedBox(height: 20),
-          TextField(),
-          SizedBox(height: 20),
-          Card(
-            child: Text("aaaaa"),
-            elevation: 15,
-            shadowColor: Colors.blue,
+          TextField(
+            controller: myBloc.textFieldController,
           ),
           SizedBox(height: 20),
-          FlatButton(
-            onPressed: null,
-            child: Text(
-              "Show Text",
-              style: TextStyle(fontSize: 20, color: Colors.lightBlue),
+          Card(
+            elevation: 10,
+            shadowColor: Colors.red,
+            child: StreamBuilder(
+              stream: myBloc.textController,
+              builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
+                String text;
+                if (snapshot.hasData) {
+                  text = snapshot.data;
+                } else {
+                  text = '0';
+                }
+                return Text(text,
+                    style: TextStyle(fontSize: 20, color: Colors.lightBlue));
+              },
             ),
+
+          ),
+          SizedBox(height: 20),
+          FlatButton(child:Text("Press Button"),
+          onPressed: myBloc.onButtonClick,
           ),
         ],
       ),
@@ -39,11 +52,13 @@ class _ShowTextFieldState extends State<ShowTextField> {
 }
 
 class BLOC {
-  BehaviorSubject<String> textFieldController = new BehaviorSubject<String>();
+  BehaviorSubject<String> textController = new BehaviorSubject<String>();
 
   void onButtonClick() {
-    String textfield = textFieldController.value ?? "nothing to show";
-    textFieldController.add(textfield);
-
+    // String text = textController.value ?? "nothing to show";
+    // textController.add(text);
+    textController.add(textFieldController.text);
   }
+
+  TextEditingController textFieldController = TextEditingController();
 }
