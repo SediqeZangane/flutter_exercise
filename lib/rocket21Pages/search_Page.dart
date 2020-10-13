@@ -4,7 +4,7 @@ class search_Page extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.deepOrange,
+      color: Colors.deepOrange[300],
     );
   }
 }

@@ -4,7 +4,7 @@ class favorite_Page extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.pinkAccent[150],
+      color: Colors.pinkAccent[100],
     );
   }
 }

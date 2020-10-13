@@ -4,7 +4,7 @@ class home_Page extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.amberAccent,
+      color: Colors.amberAccent[100],
     );
   }
 }
