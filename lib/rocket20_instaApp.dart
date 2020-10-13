@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_exercise/HomePage21.dart';
+import 'package:flutter_exercise/HomePage21Way2.dart';
 
 class MyApp20 extends StatelessWidget {
   @override
@@ -8,11 +9,10 @@ class MyApp20 extends StatelessWidget {
       title: 'اینستاگرام',
       debugShowCheckedModeBanner: false,
       theme: new ThemeData(
+          primaryColor: Colors.black,
           primaryIconTheme: IconThemeData(color: Colors.black),
           primaryTextTheme: TextTheme(title: TextStyle(color: Colors.black))),
       home: MyHomePages20(),
     );
   }
 }
-
-
