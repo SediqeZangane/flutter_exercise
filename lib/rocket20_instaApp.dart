@@ -10,7 +10,7 @@ class MyApp20 extends StatelessWidget {
       theme: new ThemeData(
           primaryIconTheme: IconThemeData(color: Colors.black),
           primaryTextTheme: TextTheme(title: TextStyle(color: Colors.black))),
-      home: MyHomePage20(),
+      home: MyHomePages20(),
     );
   }
 }
