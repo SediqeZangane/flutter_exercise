@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_exercise/rocket24-instaPost.dart';
 import 'package:flutter_exercise/rocket23_ListStories.dart';
 
 class home_Page extends StatelessWidget {
@@ -13,7 +14,10 @@ class home_Page extends StatelessWidget {
                 child: ListStories(),
                 height: (MediaQuery.of(context).size.height) * 0.15,
               )
-            : new Container();
+            : SizedBox(
+                child: rocket24_Post,
+                height: (MediaQuery.of(context).size.height) * 0.50,
+              );
       },
     );
   }
