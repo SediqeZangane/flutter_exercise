@@ -3,11 +3,22 @@ import 'package:flutter/material.dart';
 class MyApp18 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    // shey sakhtan dar dart
+    Product a = new Product(name: 'ali');
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Shopping App',
       home: ShoppingList(
         products: <Product>[
+          a,
+          new Product(name: 'Eggs'),
+          Product(name: 'Appls'),
+          Product(name: 'Chips'),
+          a,
+          new Product(name: 'Eggs'),
+          Product(name: 'Appls'),
+          Product(name: 'Chips'),
+          a,
           new Product(name: 'Eggs'),
           Product(name: 'Appls'),
           Product(name: 'Chips'),
@@ -85,6 +96,8 @@ class ShoppingListItem extends StatelessWidget {
         color: Colors.black,
         decoration: TextDecoration.lineThrough,
       );
+    } else {
+      return TextStyle(color: Colors.blue);
     }
   }
 
