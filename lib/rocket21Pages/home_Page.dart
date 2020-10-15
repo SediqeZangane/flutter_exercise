@@ -16,7 +16,7 @@ class home_Page extends StatelessWidget {
               )
             : SizedBox(
                 child: rocket24_Post,
-                height: (MediaQuery.of(context).size.height) * 0.50,
+                height: (MediaQuery.of(context).size.height) * 0.85,
               );
       },
     );
