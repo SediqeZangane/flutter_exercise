@@ -9,10 +9,12 @@ class MyApp20 extends StatelessWidget {
       title: 'اینستاگرام',
       debugShowCheckedModeBanner: false,
       theme: new ThemeData(
+          fontFamily: 'Vazir',
           primaryColor: Colors.black,
           primaryIconTheme: IconThemeData(color: Colors.black),
           primaryTextTheme: TextTheme(title: TextStyle(color: Colors.black))),
-      home: MyHomePages20(),
+      home: new Directionality(
+          textDirection: TextDirection.rtl, child: MyHomePages20()),
     );
   }
 }

@@ -34,7 +34,7 @@ class MyHomePageState20 extends State<MyHomePages20> {
     ),
     actions: <Widget>[
       Padding(
-          padding: EdgeInsets.only(right: 12.0), child: new Icon(Icons.send)),
+          padding: EdgeInsets.only(left: 12.0), child: new Icon(Icons.send)),
     ],
   );
 

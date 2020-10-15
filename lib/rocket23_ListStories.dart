@@ -2,26 +2,27 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_exercise/HomePage21.dart';
 import 'package:flutter_exercise/HomePage21Way2.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class ListStories extends StatelessWidget {
   final topText = new Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: <Widget>[
       new Text(
-        "stories",
+        "استوری ها ",
         style: TextStyle(
           fontWeight: FontWeight.bold,
         ),
       ),
       Row(
         children: <Widget>[
+          new Icon(Icons.play_arrow),
           new Text(
-            "Watch all",
+            "مشاهده ی همه ",
             style: TextStyle(
               fontWeight: FontWeight.bold,
             ),
           ),
-          new Icon(Icons.play_arrow),
         ],
       ),
     ],

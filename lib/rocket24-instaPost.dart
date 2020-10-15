@@ -13,7 +13,7 @@ final Widget rocket24_Post = new Column(
   crossAxisAlignment: CrossAxisAlignment.start,
   children: <Widget>[
     new Padding(
-      padding: EdgeInsets.fromLTRB(20, 16, 8, 8),
+      padding: EdgeInsets.fromLTRB(20, 16, 20, 8),
       child: new Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
@@ -31,10 +31,10 @@ final Widget rocket24_Post = new Column(
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(left: 8),
+                padding: EdgeInsets.only(right: 8),
                 child: new Text(
-                  "Sediqe Zangane",
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                  " صدیقه زنگنه ",
+                  style: TextStyle(fontWeight: FontWeight.bold,),
                 ),
               ),
             ],
@@ -57,24 +57,52 @@ final Widget rocket24_Post = new Column(
         children: <Widget>[
           new Row(
             children: <Widget>[
-              new IconButton(
-                  icon: new Icon(
-                    FontAwesomeIcons.heart,
-                    color: Colors.black,
-                  ),
-                  onPressed: null),
-              new IconButton(
-                  icon: new Icon(
+              new GestureDetector(
+                onTap: () {},
+                child: new Icon(
+                  FontAwesomeIcons.heart,
+                  color: Colors.black,
+                ),
+              ),
+              new GestureDetector(
+                onTap: () {},
+                child: Padding(
+                  padding: EdgeInsets.only(right: 14),
+                  child: new Icon(
                     FontAwesomeIcons.comment,
                     color: Colors.black,
                   ),
-                  onPressed: null),
-              new IconButton(
-                  icon: new Icon(
+                ),
+              ),
+              new GestureDetector(
+                onTap: () {},
+                child: Padding(
+                  padding: EdgeInsets.only(right: 12),
+                  child: new Icon(
                     FontAwesomeIcons.paperPlane,
                     color: Colors.black,
                   ),
-                  onPressed: null),
+                ),
+              ),
+              //ba Gesture mitunim beyne iconha fasele delkhah ijad konim
+              // new IconButton(
+              //     icon: new Icon(
+              //       FontAwesomeIcons.heart,
+              //       color: Colors.black,
+              //     ),
+              //     onPressed: null),
+              // new IconButton(
+              //     icon: new Icon(
+              //       FontAwesomeIcons.comment,
+              //       color: Colors.black,
+              //     ),
+              //     onPressed: null),
+              // new IconButton(
+              //     icon: new Icon(
+              //       FontAwesomeIcons.paperPlane,
+              //       color: Colors.black,
+              //     ),
+              //     onPressed: null),
             ],
           ),
           new IconButton(
@@ -109,16 +137,17 @@ final Widget rocket24_Post = new Column(
                     'https://avatars0.githubusercontent.com/u/67832722?s=460&u=d2fa4c331417a3ac66bd628fb6dfcc75aa5ea002&v=8'),
               ),
             ),
-            margin: EdgeInsets.only(right: 16),
+            margin: EdgeInsets.only(left: 16),
           ),
           new Expanded(
             child: new TextField(
               decoration: new InputDecoration(
-                  border: InputBorder.none,
-                  hintText: 'اضافه کردن یک نظر ...',
-                  hintStyle: TextStyle(
-                    fontWeight: FontWeight.w200,
-                  )),
+                border: InputBorder.none,
+                hintText: 'اضافه کردن یک نظر ...',
+                hintStyle: TextStyle(
+                  fontWeight: FontWeight.w200,
+                ),
+              ),
             ),
           ),
         ],
@@ -126,7 +155,7 @@ final Widget rocket24_Post = new Column(
     ),
     new Padding(
       padding: EdgeInsets.symmetric(
-        horizontal: 16,
+        horizontal: 20,
       ),
       child: new Text(
         "1 روز قبل",
