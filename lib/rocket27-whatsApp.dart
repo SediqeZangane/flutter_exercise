@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_exercise/rocket27_Pages/Call_Screen.dart';
+import 'package:flutter_exercise/rocket27_Pages/Camera_Screen.dart';
+import 'package:flutter_exercise/rocket27_Pages/Chat_Screen.dart';
+import 'package:flutter_exercise/rocket27_Pages/Status_Screen.dart';
 
 class WhatsApp extends StatefulWidget {
   @override
@@ -7,11 +11,13 @@ class WhatsApp extends StatefulWidget {
   }
 }
 
-class _WhatsAppState extends State<WhatsApp> {
+class _WhatsAppState extends State<WhatsApp> with TickerProviderStateMixin {
   TabController tabController;
+
   @override
   void initState() {
-     super.initState();
+    super.initState();
+    tabController = new TabController(initialIndex: 1,length: 4, vsync: this);
   }
 
   @override
@@ -32,6 +38,8 @@ class _WhatsAppState extends State<WhatsApp> {
           ),
         ],
         bottom: new TabBar(
+          indicatorColor: Colors.white,
+          controller: tabController,
           tabs: <Widget>[
             new Tab(
               icon: new Icon(Icons.camera_alt),
@@ -40,16 +48,22 @@ class _WhatsAppState extends State<WhatsApp> {
               text: ' چت ها ',
             ),
             new Tab(
-              text: ' وضیعت ها ',
+              text: ' وضیعت  ',
             ),
             new Tab(
-              icon: new Icon(Icons.camera_alt),
-            ),
-            new Tab(
-              icon: new Icon(Icons.camera_alt),
+              text: "تماس ها",
             ),
           ],
         ),
+      ),
+      body: new TabBarView(
+        controller: tabController,
+        children: <Widget>[
+          new CameraScreen(),
+          new ChatScreen(),
+          new StatusScreen(),
+          new CallScreen(),
+        ],
       ),
     );
   }
