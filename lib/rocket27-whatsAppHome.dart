@@ -8,10 +8,12 @@ class WhatsAppHome extends StatelessWidget {
       title: 'WhatsApp',
       debugShowCheckedModeBanner: false,
       theme: new ThemeData(
-          // fontFamily: 'Vazir',
-          primaryColor: new Color(0xff075e54),
-          // primaryIconTheme: IconThemeData(color: Colors.black),
-          // primaryTextTheme: TextTheme(title: TextStyle(color: Colors.black))),
+        fontFamily: 'Vazir',
+        primaryColor: new Color(0xff075e54),
+        accentColor: new Color(0xff25d366),
+
+        // primaryIconTheme: IconThemeData(color: Colors.black),
+        // primaryTextTheme: TextTheme(title: TextStyle(color: Colors.black))),
       ),
       home: new Directionality(
           textDirection: TextDirection.rtl, child: WhatsApp()),

@@ -17,7 +17,7 @@ class _WhatsAppState extends State<WhatsApp> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    tabController = new TabController(initialIndex: 1,length: 4, vsync: this);
+    tabController = new TabController(initialIndex: 1, length: 4, vsync: this);
   }
 
   @override
@@ -25,14 +25,41 @@ class _WhatsAppState extends State<WhatsApp> with TickerProviderStateMixin {
     return Scaffold(
       appBar: new AppBar(
         elevation: 5,
-        title:
-            new Text("واتساپ", style: TextStyle(fontWeight: FontWeight.bold)),
+        title: new Text(
+          "واتساپ",
+        ),
         actions: <Widget>[
           new Icon(Icons.search),
           new Padding(
             padding: EdgeInsets.symmetric(horizontal: 8),
           ),
-          new Icon(Icons.more_vert),
+          new PopupMenuButton<String>(
+            // onSelected: (String choice) {
+            //   print(choice);
+            // },
+            itemBuilder: (BuildContext context) {
+              return [
+                new PopupMenuItem(
+                  // value: 'new_group',
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      new Text("گروه جدید"),
+                    ],
+                  ),
+                ),
+                new PopupMenuItem(
+                  // value: 'setting',
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      new Text("تنظیمات "),
+                    ],
+                  ),
+                ),
+              ];
+            },
+          ),
           new Padding(
             padding: EdgeInsets.symmetric(horizontal: 3),
           ),
@@ -64,6 +91,18 @@ class _WhatsAppState extends State<WhatsApp> with TickerProviderStateMixin {
           new StatusScreen(),
           new CallScreen(),
         ],
+      ),
+      floatingActionButton: new FloatingActionButton(
+        // backgroundColor: new Color(0xff25d366),
+        //raveshe digar baray color
+        backgroundColor: Theme.of(context).accentColor,
+        child: new Icon(
+          Icons.message,
+          color: Colors.white,
+        ),
+        onPressed: () {
+          print('open chat');
+        },
       ),
     );
   }
