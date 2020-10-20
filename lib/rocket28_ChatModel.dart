@@ -7,7 +7,7 @@ class ChatModel {
   ChatModel({this.name, this.message, this.time, this.avatarUrl});
 }
 
-List<ChatModel> ChatData = [
+List<ChatModel> ChatDataList = [
   new ChatModel(
     name: 'Koloche',
     message: 'khoobi agnes joon!',

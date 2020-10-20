@@ -4,6 +4,8 @@ import 'package:flutter_exercise/rocket27_Pages/Call_Screen.dart';
 import 'package:flutter_exercise/rocket27_Pages/Camera_Screen.dart';
 import 'package:flutter_exercise/rocket27_Pages/Chat_Screen.dart';
 import 'package:flutter_exercise/rocket27_Pages/Status_Screen.dart';
+import 'package:flutter_exercise/rocket27_Pages/rocket30-create_chat_screen.dart';
+import 'package:flutter_exercise/rocket27_Pages/rocket30-setting_screen.dart';
 
 class WhatsApp extends StatefulWidget {
   @override
@@ -41,13 +43,17 @@ class _WhatsAppState extends State<WhatsApp> with TickerProviderStateMixin {
           padding: EdgeInsets.symmetric(horizontal: 8),
         ),
         new PopupMenuButton<String>(
-          // onSelected: (String choice) {
-          //   print(choice);
-          // },
+          onSelected: (String choice) {
+            if (choice == "setting") {
+              Navigator.push(context, new MaterialPageRoute(builder: (context) {
+                return settingScreen();
+              }));
+            }
+          },
           itemBuilder: (BuildContext context) {
             return [
               new PopupMenuItem(
-                // value: 'new_group',
+                value: 'new_group',
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
@@ -56,7 +62,7 @@ class _WhatsAppState extends State<WhatsApp> with TickerProviderStateMixin {
                 ),
               ),
               new PopupMenuItem(
-                // value: 'setting',
+                value: 'setting',
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
@@ -150,7 +156,9 @@ class _WhatsAppState extends State<WhatsApp> with TickerProviderStateMixin {
           color: Colors.white,
         ),
         onPressed: () {
-          print('open chat');
+          Navigator.push(context, new MaterialPageRoute(builder: (context) {
+            return createChatScreen();
+          }));
         },
       ),
     );
