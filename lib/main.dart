@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_exercise/SetState.dart';
 import 'package:flutter_exercise/bloc_soul.dart';
+import 'package:flutter_exercise/rocke34-whatsAppHomeWithAnimation.dart';
 import 'package:flutter_exercise/rocket18_ShoppingCart.dart';
 import 'package:flutter_exercise/rocket20_instaApp.dart';
 import 'package:flutter_exercise/useStreamBuilder.dart';

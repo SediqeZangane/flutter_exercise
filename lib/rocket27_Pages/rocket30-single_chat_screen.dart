@@ -60,7 +60,8 @@ class singleChatScreen extends StatelessWidget {
                 ),
                 new RaisedButton(
                   onPressed: () {
-                    Navigator.pop(context);
+                    Navigator.pop(context, "سلام${chatModel.name}"); 
+
                   },
                   child: new Text("بازگشت "),
                 ),

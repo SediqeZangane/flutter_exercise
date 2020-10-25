@@ -45,9 +45,11 @@ class _WhatsAppState extends State<WhatsApp> with TickerProviderStateMixin {
         new PopupMenuButton<String>(
           onSelected: (String choice) {
             if (choice == "setting") {
-              Navigator.push(context, new MaterialPageRoute(builder: (context) {
-                return settingScreen();
-              }));
+              // Navigator.push(context, new MaterialPageRoute(builder: (context) {
+              //   return settingScreen();
+              // }));
+              //  raveshe roocket 30
+              Navigator.pushNamed(context, "/setting");
             }
           },
           itemBuilder: (BuildContext context) {
@@ -156,9 +158,11 @@ class _WhatsAppState extends State<WhatsApp> with TickerProviderStateMixin {
           color: Colors.white,
         ),
         onPressed: () {
-          Navigator.push(context, new MaterialPageRoute(builder: (context) {
-            return createChatScreen();
-          }));
+          // Navigator.push(context, new MaterialPageRoute(builder: (context) {
+          //   return createChatScreen();
+          // }));
+          //  raveshe roocket 30
+          Navigator.pushNamed(context, "/new_group");
         },
       ),
     );

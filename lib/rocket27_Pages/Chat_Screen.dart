@@ -15,10 +15,7 @@ class ChatScreen extends StatelessWidget {
           children: <Widget>[
             new GestureDetector(
               onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return new singleChatScreen(chatModel: ChatDataList[index],
-                  );
-                }));
+                _navigateAndDisplaySomeMessage(context, ChatDataList[index]);
               },
               child: new ListTile(
                 leading: new CircleAvatar(
@@ -53,4 +50,17 @@ class ChatScreen extends StatelessWidget {
       },
     );
   }
+}
+
+_navigateAndDisplaySomeMessage(
+    BuildContext context, ChatModel chatModel) async {
+  final result =
+      await Navigator.push(context, MaterialPageRoute(builder: (context) {
+    return new singleChatScreen(
+      chatModel: chatModel,
+    );
+  }));
+  Scaffold.of(context).showSnackBar(SnackBar(
+    content: Text(result, style: TextStyle(fontFamily: 'Vazir')),
+  ));
 }
