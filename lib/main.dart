@@ -5,6 +5,7 @@ import 'package:flutter_exercise/bloc_soul.dart';
 import 'package:flutter_exercise/rocke34-whatsAppHomeWithAnimation.dart';
 import 'package:flutter_exercise/rocket18_ShoppingCart.dart';
 import 'package:flutter_exercise/rocket20_instaApp.dart';
+import 'package:flutter_exercise/roocket35_stagger_animation.dart';
 import 'package:flutter_exercise/useStreamBuilder.dart';
 import 'package:flutter_exercise/rocket27-whatsApp.dart';
 import 'StatefulBuilder.dart';
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: WhatsAppHome(),
+      home: AnimatinDemo(),
     );
   }
 }
