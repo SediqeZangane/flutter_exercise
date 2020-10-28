@@ -58,7 +58,10 @@ flutter:
   assets:
     - assets/images/insta_logo.png
     - assets/images/post.jpg
+    - assets/images/aaa.jpg
+    - assets/images/qq.jpg
     - assets/images/icon_whatsapp.png
+    - assets/images/unnamed.png
 
     # An image asset can refer to one or more resolution-specific "variants", see
     # https://flutter.dev/assets-and-images/#resolution-aware.
