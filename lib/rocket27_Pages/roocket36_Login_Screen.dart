@@ -1,11 +1,37 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_exercise/StatefulBuilder.dart';
+import 'package:flutter_exercise/animations/signin_animation.dart';
 import 'package:flutter_exercise/components/roocket36_Form.dart';
 import 'package:flutter_exercise/rocket27_Pages/Camera_Screen.dart';
 import 'package:flutter_exercise/rocket28_ChatModel.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => LoginScreenState();
+}
+
+class LoginScreenState extends State<LoginScreen>
+    with SingleTickerProviderStateMixin {
+  AnimationController _loginButtoncontroller;
+  final _formKey = GlobalKey<FormState>();
+
+  @override
+  void initState() {
+    super.initState();
+    _loginButtoncontroller = AnimationController(
+        vsync: this, duration: Duration(milliseconds: 1000));
+  }
+
+  @override
+  void dispose() {
+    _loginButtoncontroller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
+    timeDilation = .4;
     var page = MediaQuery.of(context).size;
     return Scaffold(
       resizeToAvoidBottomPadding: false,
@@ -33,7 +59,7 @@ class LoginScreen extends StatelessWidget {
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                FormContainer(),
+                FormContainer(formKey: _formKey),
                 new FlatButton(
                   onPressed: null,
                   child: Text(
@@ -47,22 +73,14 @@ class LoginScreen extends StatelessWidget {
                 ),
               ],
             ),
-            new Container(
-              margin: const EdgeInsets.only(bottom: 30),
-              width: 230,
-              height: 60,
-              alignment: Alignment.center,
-              decoration: new BoxDecoration(
-                  color: new Color(0xff075E54),
-                  borderRadius:
-                      new BorderRadius.all(const Radius.circular(30))),
-              child: new Text(
-                "ورود",
-                style: new TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
-                    fontWeight: FontWeight.w300,
-                    letterSpacing: .3),
+            GestureDetector(
+              onTap: () async {
+                _formKey.currentState.validate();
+                // await _loginButtoncontroller.forward();
+                // await _loginButtoncontroller.reverse();
+              },
+              child: SignInAnimation(
+                controller: _loginButtoncontroller.view,
               ),
             ),
           ],
