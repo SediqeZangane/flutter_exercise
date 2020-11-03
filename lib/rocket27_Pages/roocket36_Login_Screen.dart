@@ -15,12 +15,29 @@ class LoginScreenState extends State<LoginScreen>
     with SingleTickerProviderStateMixin {
   AnimationController _loginButtoncontroller;
   final _formKey = GlobalKey<FormState>();
+  String _emailValue;
+  String _passwordValue;
+
+  // final _myTextFieldController = TextEditingController();
+
+  emailOnSaved(String value) {
+    print(" your email is " + value);
+    _emailValue = value;
+  }
+
+  passwordOnSaved(String value) {
+    print(" your email is " + value);
+    _passwordValue = value;
+  }
 
   @override
   void initState() {
     super.initState();
     _loginButtoncontroller = AnimationController(
         vsync: this, duration: Duration(milliseconds: 1000));
+    // _myTextFieldController.addListener(() {
+    //   print(_myTextFieldController.text);
+    // });
   }
 
   @override
@@ -59,7 +76,12 @@ class LoginScreenState extends State<LoginScreen>
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                FormContainer(formKey: _formKey),
+                FormContainer(
+                  formKey: _formKey,
+                  emailOnSaved: emailOnSaved,
+                  passwordOnSaved: passwordOnSaved,
+                ),
+                // TextField(controller: _myTextFieldController,),
                 new FlatButton(
                   onPressed: null,
                   child: Text(
@@ -75,9 +97,16 @@ class LoginScreenState extends State<LoginScreen>
             ),
             GestureDetector(
               onTap: () async {
-                _formKey.currentState.validate();
-                // await _loginButtoncontroller.forward();
-                // await _loginButtoncontroller.reverse();
+                // print((_myTextFieldController.text)+"hello");
+                if (_formKey.currentState.validate()) ;
+                {
+                  _formKey.currentState.save();
+                  print("http request");
+                  print(_emailValue);
+                  print(_passwordValue);
+                  await _loginButtoncontroller.forward();
+                  await _loginButtoncontroller.reverse();
+                }
               },
               child: SignInAnimation(
                 controller: _loginButtoncontroller.view,
