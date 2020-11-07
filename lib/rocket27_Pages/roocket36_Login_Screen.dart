@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_exercise/StatefulBuilder.dart';
@@ -5,6 +7,7 @@ import 'package:flutter_exercise/animations/signin_animation.dart';
 import 'package:flutter_exercise/components/roocket36_Form.dart';
 import 'package:flutter_exercise/rocket27_Pages/Camera_Screen.dart';
 import 'package:flutter_exercise/rocket28_ChatModel.dart';
+import 'package:flutter_exercise/services/auth_services.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -13,8 +16,9 @@ class LoginScreen extends StatefulWidget {
 
 class LoginScreenState extends State<LoginScreen>
     with SingleTickerProviderStateMixin {
-  AnimationController _loginButtoncontroller;
+  AnimationController _loginButtonController;
   final _formKey = GlobalKey<FormState>();
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
   String _emailValue;
   String _passwordValue;
 
@@ -33,7 +37,7 @@ class LoginScreenState extends State<LoginScreen>
   @override
   void initState() {
     super.initState();
-    _loginButtoncontroller = AnimationController(
+    _loginButtonController = AnimationController(
         vsync: this, duration: Duration(milliseconds: 1000));
     // _myTextFieldController.addListener(() {
     //   print(_myTextFieldController.text);
@@ -42,7 +46,7 @@ class LoginScreenState extends State<LoginScreen>
 
   @override
   void dispose() {
-    _loginButtoncontroller.dispose();
+    _loginButtonController.dispose();
     super.dispose();
   }
 
@@ -51,6 +55,7 @@ class LoginScreenState extends State<LoginScreen>
     timeDilation = .4;
     var page = MediaQuery.of(context).size;
     return Scaffold(
+      key: _scaffoldKey,
       resizeToAvoidBottomPadding: false,
       body: Container(
         // decoration: BoxDecoration(
@@ -98,23 +103,45 @@ class LoginScreenState extends State<LoginScreen>
             GestureDetector(
               onTap: () async {
                 // print((_myTextFieldController.text)+"hello");
-                if (_formKey.currentState.validate()) ;
-                {
+                if (_formKey.currentState.validate()) {
                   _formKey.currentState.save();
                   print("http request");
-                  print(_emailValue);
-                  print(_passwordValue);
-                  await _loginButtoncontroller.forward();
-                  await _loginButtoncontroller.reverse();
+                  // print(_emailValue);
+                  // print(_passwordValue);
+                  sendDataForLogin();
                 }
               },
               child: SignInAnimation(
-                controller: _loginButtoncontroller.view,
+                controller: _loginButtonController.view,
               ),
             ),
           ],
         ),
       ),
     );
+  }
+
+  sendDataForLogin() async {
+    await _loginButtonController.animateTo(0.150);
+    // await _loginButtonController.forward();
+    // await _loginButtonController.reverse();
+
+    // await sendDataToServer({"email": _emailValue, "password": _passwordValue});
+//baray inke Az methode un safe estefade konim classesho seda zadim
+    Map response = await (new AuthService())
+        .sendDataToServer({"email": _emailValue, "password": _passwordValue});
+    if (response["status"] == "success") {
+      await _loginButtonController.forward();
+      Navigator.pushReplacementNamed(context, "/");
+    } else {
+      await _loginButtonController.reverse();
+      _scaffoldKey.currentState.showSnackBar(
+        SnackBar(
+          content: Text(
+            response["data"],
+          ),
+        ),
+      );
+    }
   }
 }
