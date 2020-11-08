@@ -8,6 +8,7 @@ import 'package:flutter_exercise/components/roocket36_Form.dart';
 import 'package:flutter_exercise/rocket27_Pages/Camera_Screen.dart';
 import 'package:flutter_exercise/rocket28_ChatModel.dart';
 import 'package:flutter_exercise/services/auth_services.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -131,6 +132,7 @@ class LoginScreenState extends State<LoginScreen>
     Map response = await (new AuthService())
         .sendDataToServer({"email": _emailValue, "password": _passwordValue});
     if (response["status"] == "success") {
+      await storeUserData(response['data']);
       await _loginButtonController.forward();
       Navigator.pushReplacementNamed(context, "/");
     } else {
@@ -143,5 +145,11 @@ class LoginScreenState extends State<LoginScreen>
         ),
       );
     }
+  }
+
+  storeUserData(Map userData) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setString('user.api_token', userData['api_token']);
+    await prefs.setString('user.api_id', userData['user_id']);
   }
 }
